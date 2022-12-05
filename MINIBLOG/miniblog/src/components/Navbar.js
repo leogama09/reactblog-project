@@ -5,7 +5,7 @@ import styles from "./Navbar.module.css"
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-        <NavLink to="/" classname={styles.brand}>
+        <NavLink to="/" className={styles.brand}>
         Mini <b>BLOG</b>
         </NavLink>
         <ul className={styles.links_list}>
