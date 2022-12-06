@@ -1,3 +1,5 @@
+import { Auth } from "../firebase/config"
+
 import {
     getAuth,
     createUserWithEmailAndPassword,
