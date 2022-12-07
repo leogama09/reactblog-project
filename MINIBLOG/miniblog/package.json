@@ -1,5 +1,6 @@
 {
   "name": "miniblog",
+  "homepage": "https://leogama09.github.io/reactblog-project/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
