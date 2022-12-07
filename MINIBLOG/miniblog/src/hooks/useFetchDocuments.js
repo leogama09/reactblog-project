@@ -1,33 +1,33 @@
-import { useState, useEffect } from "react";
-import { db } from "../firebase/config";
+import { useState, useEffect } from "react"
+import { db } from "../firebase/config"
 import {
   collection,
   query,
   orderBy,
   onSnapshot,
   where,
-} from "firebase/firestore";
+} from "firebase/firestore"
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
-  const [documents, setDocuments] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [documents, setDocuments] = useState(null)
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(null)
 
   // deal with memory leak
-  const [cancelled, setCancelled] = useState(false);
+  const [cancelled, setCancelled] = useState(false)
 
   useEffect(() => {
     async function loadData() {
       if (cancelled) {
-        return;
+        return
       }
 
-      setLoading(true);
+      setLoading(true)
 
-      const collectionRef = await collection(db, docCollection);
+      const collectionRef = await collection(db, docCollection)
 
       try {
-        let q;
+        let q
 
         if (search) {
           q = await query(
@@ -42,7 +42,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
             orderBy("createdAt", "desc")
           );
         } else {
-          q = await query(collectionRef, orderBy("createdAt", "desc"));
+          q = await query(collectionRef, orderBy("createdAt", "desc"))
         }
 
         await onSnapshot(q, (querySnapshot) => {
@@ -51,24 +51,24 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
               id: doc.id,
               ...doc.data(),
             }))
-          );
-        });
+          )
+        })
       } catch (error) {
-        console.log(error);
-        setError(error.message);
+        console.log(error)
+        setError(error.message)
       }
 
-      setLoading(false);
+      setLoading(false)
     }
 
-    loadData();
-  }, [docCollection, search, uid, cancelled]);
+    loadData()
+  }, [docCollection, documents, search, uid, cancelled])
 
-  console.log(documents);
+  console.log(documents)
 
   useEffect(() => {
-    return () => setCancelled(true);
-  }, []);
+    return () => setCancelled(true)
+  }, [])
 
-  return { documents, loading, error };
-};
+  return { documents, loading, error }
+}
