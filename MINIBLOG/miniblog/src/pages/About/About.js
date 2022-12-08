@@ -6,10 +6,10 @@ import { Link } from "react-router-dom"
 const About = () => {
   return (
     <div className={styles.about}>
-        <h2>Sobre o Mini <span style={{ fontWeight: 'bold' }}>Blog</span></h2>
-        <p>Este projeto consiste em um blog feito com React no front-end e Firebase no backend.</p>
+        <h2>About Mini <span style={{ fontWeight: 'bold' }}>Blog</span></h2>
+        <p>This project consists of a blog made with React on the frontend and Firebase on the backend.</p>
         <Link to ="/posts/create" className="btn">
-          Criar post
+          Create post
         </Link>
     </div>
   )

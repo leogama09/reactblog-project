@@ -35,8 +35,8 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
-        <h1>Entrar</h1>
-        <p>Faça o login para poder utilizar o sistema</p>
+        <h1>Log In</h1>
+        <p>Log in to be able to use the system</p>
         <form onSubmit={handleSubmit}>
 
           <label>
@@ -45,26 +45,26 @@ const Login = () => {
               type="email" 
               name="email"
               required
-              placeholder="E-mail do usuário"
+              placeholder="User e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
              />
           </label>
           <label>
-            <span>Senha:</span>
+            <span>Password:</span>
             <input 
               type="password" 
               name="password"
               required
-              placeholder="Insira sua senha"
+              placeholder="Insert your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
              />
           </label>
-          {!loading && <button className="btn">Entrar</button>}
+          {!loading && <button className="btn">Enter</button>}
           {loading && (
            <button className="btn" disabled>
-             Aguarde...
+             Loading...
            </button>
           )}
           {error && <p className="error">{error}</p>}

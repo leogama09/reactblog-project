@@ -16,25 +16,25 @@ const Dashboard = () => {
   const {deleteDocument} = useDeleteDocument("posts")
 
   if (loading) {
-    return <p>Carregando...</p>
+    return <p>Loading...</p>
   }
 
   return (
     <div className={styles.dashboard}>
         <h2>Dashboard</h2>
-        <p>Gerencie os seus posts</p>
+        <p>Manage all your posts</p>
         {posts && posts.length === 0 ? (
           <div className={styles.noposts}>
-            <p>Não foram encontrados posts</p>
+            <p>Posts were not found.</p>
             <Link to="/posts/create" className="btn">
-              Criar primeiro post
+              Create first post
             </Link>
           </div>
         ) : (
           <>
           <div className={styles.post_header}>
-            <span>Título</span>
-            <span>Ações</span>
+            <span>Title</span>
+            <span>Actions</span>
           </div>
 
           {posts && 
@@ -42,15 +42,15 @@ const Dashboard = () => {
             <p>{post.title}</p>
             <div>
                 <Link to={`/posts/${post.id}`} className="btn btn-outline">
-                  Ver
+                  Check
                 </Link>
                 <Link to={`/posts/edit/${post.id}`} className="btn btn-outline">
-                  Editar
+                  Edit
                 </Link>
                 <button onClick={() => deleteDocument(post.id)} 
                 className="btn btn-outline btn-danger"
                 >
-                  Excluir
+                  Delete
                 </button>
             </div>
           </div>)}
